@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% set active_page = 'create' %}
+
+{% block title %}
+<title>Create a new post</title>
+{% endblock %}
+
+{% block content %}
+<h1 class="mb-5 mt-3">Create new blog post</h1>
+<form class="form" action="/posts" method="POST">
+  <div class='input-group mb-4'>
+    <div class="input-group-prepend">
+      <span class="input-group-text">Title</span>
+    </div>
+    <input class="form-control" type='title' name='title' id='title' required />
+  </div>
+  
+  <div class="input-group mb-4">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Author</span>
+    </div>
+    <input type="text" class="form-control" name="author" id="author" required />
+  </div>
+
+  <div class="input-group mb-4">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Content</span>
+    </div>
+    <textarea class="form-control" type="text" name='content' id='content' required></textarea>
+  </div>
+
+  <button class="btn btn-success btn-block" type="submit">Post</button>
+  <button class="btn btn-danger btn-block">
+    <a style="text-decoration: none; color: white;" class="link" href="/posts">Cancel</a>
+  </button>
+</form>
+{% endblock %}

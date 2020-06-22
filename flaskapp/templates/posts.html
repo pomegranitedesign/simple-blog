@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% set active_page = 'posts' %}
+
+{% block head %}
+<title>Posts</title>
+{% endblock %}
+
+{% block content %}
+
+<h1 class="mt-4">
+  {% if all_posts|length == 0 %}
+  No posts
+  <br />
+  <a href="/posts/create">Create a new post!</a>
+  {% else %}
+  All Posts
+  {% endif %}
+</h1>
+
+<ul class="list-group mt-5">
+  {% for post in all_posts %}
+    <li class="list-group-item pt-4 pb-4 pl-4">
+      <a href="/post/{{ post.id }}">
+        <h3>{{ post.title }}</h3>
+      </a>
+      {% if post.author %}
+      <p>By: {{ post.author }}</p>
+      {% else %}
+      <h2>By: N/A</h2>
+      {% endif %}
+      <button>
+        <a style="text-decoration: none;" href="/posts/edit/{{ post.id }}">Edit Post</a>
+      </button>
+      <button>
+        <a style="text-decoration: none;" href="/posts/delete/{{ post.id }}">Delete Post</a>
+      </button>
+    </li>
+  {% endfor %}
+</ul>
+{% endblock %} 

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Edit Post</title>
+{% endblock %}
+
+{% block content %}
+<h1 class="mt-5 mb-4">Edit Post</h1>
+<form class="form" action="/posts/edit/{{ post.id }}" method="POST">
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Title</span>
+    </div>
+    <input class="form-control" type='title' value="{{ post.title }}" name='title' id='title' required />
+  </div>
+  
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">
+        Author
+      </span>
+    </div>
+    <input class="form-control" type="text" value="{{ post.author }}" name='author' id='author' required />
+  </div>
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">
+        Content
+      </span>
+    </div>
+    <textarea class="form-control" type="text" value="{{ post.content }}" name='content' id='content' required></textarea>
+  </div>
+
+  <button class="btn btn-success btn-block" type="submit">Save</button>
+  <button class="btn btn-danger btn-block">
+    <a style="text-decoration: none; color: white;" class="link" href="/posts">Cancel</a>
+  </button>
+</form>
+{% endblock %}
